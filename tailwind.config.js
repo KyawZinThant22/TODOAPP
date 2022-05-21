@@ -16,20 +16,27 @@ module.exports = {
       VeryDarkGrayishBlue: "hsl(235, 19%, 35%)",
       VeryDarkBlue: " hsl(235, 21%, 11%)",
       VeryDarkDesaturatedBlue: " hsl(235, 24%, 19%)",
-      LightGrayishBlue: " hsl(234, 39%, 85%)",
-      LightGrayishBlue: " hsl(236, 33%, 92%)",
-      DarkGrayishBlue: " hsl(234, 11%, 52%)",
-      VeryDarkGrayishBlue: " hsl(233, 14%, 35%)",
-      VeryDarkGrayishBlue: " hsl(237, 14%, 26%)",
+    },
+    letterSpacing: {
+      wide: "0.1em",
+      wider: "0.2em",
     },
     extend: {
       backgroundImage: (theme) => ({
-        bg_desktop_dark: "url(/images/bg-desktop-dark.jpg)",
-        bg_desktop_light: "url(/images/bg-desktop-light.jpg)",
-        bg_mobile_dark: "url(/images/bg-mobile-dark.jpg)",
-        bg_mobile_light: "url(/images/bg-mobile-light.jpg)",
+        "desktop-dark": "url('/src/assets/images/bg-desktop-dark.jpg')",
+        "desktop-light": "url('/src/assets/images/bg-desktop-light.jpg')",
+        "mobile-dark": "url('/src/assets/images/bg-mobile-dark.jpg')",
+        "mobile-light": "url('/src/assets/images/bg-mobile-light.jpg')",
+        sun: "url('/src/assets/svg/icon-sun.svg')",
+        moon: "url('/src/assets/svg/icon-moon.svg')",
       }),
+    },
+  },
+  variants: {
+    extend: {
+      backgroundImage: ["dark"],
     },
   },
   plugins: [],
 };
+// https://github.com/KyawZinThant22/TODOAPP/blob/wai/developing/src/assets/images/bg-desktop-dark.jpg
