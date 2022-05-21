@@ -1,25 +1,35 @@
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  darkMode: "media",
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    colors : {
-    "VeryLightGray" : "hsl(0, 0%, 98%)",
-    "VeryLightGrayishBlue" : "hsl(236, 33%, 92%)",
-    "LightGrayishBlue": "hsl(233, 11%, 84%)",
-    "DarkGrayishBlue":"hsl(236, 9%, 61%)",
-    "VeryDarkGrayishBlue":"hsl(235, 19%, 35%)",
-    "VeryDarkBlue":" hsl(235, 21%, 11%)",
-    "VeryDarkDesaturatedBlue":" hsl(235, 24%, 19%)",
-    "LightGrayishBlue":" hsl(234, 39%, 85%)",
-    "LightGrayishBlue" :" hsl(236, 33%, 92%)",
-    "DarkGrayishBlue":" hsl(234, 11%, 52%)",
-    "VeryDarkGrayishBlue":" hsl(233, 14%, 35%)",
-    "VeryDarkGrayishBlue":" hsl(237, 14%, 26%)"
-
+    screens: {
+      sm: "480px",
+      md: "768px",
+      lg: "976px",
+      xl: "1200px",
     },
-
-    extend: {},
+    colors: {
+      VeryLightGray: "hsl(0, 0%, 98%)",
+      VeryLightGrayishBlue: "hsl(236, 33%, 92%)",
+      LightGrayishBlue: "hsl(233, 11%, 84%)",
+      DarkGrayishBlue: "hsl(236, 9%, 61%)",
+      VeryDarkGrayishBlue: "hsl(235, 19%, 35%)",
+      VeryDarkBlue: " hsl(235, 21%, 11%)",
+      VeryDarkDesaturatedBlue: " hsl(235, 24%, 19%)",
+      LightGrayishBlue: " hsl(234, 39%, 85%)",
+      LightGrayishBlue: " hsl(236, 33%, 92%)",
+      DarkGrayishBlue: " hsl(234, 11%, 52%)",
+      VeryDarkGrayishBlue: " hsl(233, 14%, 35%)",
+      VeryDarkGrayishBlue: " hsl(237, 14%, 26%)",
+    },
+    extend: {
+      backgroundImage: (theme) => ({
+        bg_desktop_dark: "url(/images/bg-desktop-dark.jpg)",
+        bg_desktop_light: "url(/images/bg-desktop-light.jpg)",
+        bg_mobile_dark: "url(/images/bg-mobile-dark.jpg)",
+        bg_mobile_light: "url(/images/bg-mobile-light.jpg)",
+      }),
+    },
   },
   plugins: [],
-}
+};
