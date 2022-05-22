@@ -1,10 +1,12 @@
-
-import './App.css';
+import "./App.css";
+import AddTodo from "./components/AddTodo";
+import Header from "./components/Header";
 
 function App() {
   return (
-    <div >
-      <h1 className="text-DarkGrayishBlue">Hello Ko wai Yan kyaw</h1>
+    <div>
+      <Header />
+      <AddTodo/>
     </div>
   );
 }
