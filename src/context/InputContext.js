@@ -5,11 +5,11 @@ export const InputContext = createContext();
 
 export const InputContextProvider = ({children}) => {
 
-    const [input , SetInput] = useState("")
+    const [input , setInput] = useState("")
 
     const InputContextValue = {
         input , 
-        SetInput
+        setInput
     }
 
 
