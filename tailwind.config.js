@@ -27,8 +27,6 @@ module.exports = {
         "desktop-light": "url('/src/assets/images/bg-desktop-light.jpg')",
         "mobile-dark": "url('/src/assets/images/bg-mobile-dark.jpg')",
         "mobile-light": "url('/src/assets/images/bg-mobile-light.jpg')",
-        sun: "url('/src/assets/svg/icon-sun.svg')",
-        moon: "url('/src/assets/svg/icon-moon.svg')",
       }),
     },
   },
