@@ -29,6 +29,7 @@ module.exports = {
         "mobile-light": "url('/src/assets/images/bg-mobile-light.jpg')",
       }),
     },
+    
   },
   variants: {
     extend: {
