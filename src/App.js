@@ -4,9 +4,9 @@ import Header from "./components/Header";
 
 function App() {
   return (
-    <div>
+    <div className="">
       <Header />
-      <AddTodo/>
+      <AddTodo />
     </div>
   );
 }
