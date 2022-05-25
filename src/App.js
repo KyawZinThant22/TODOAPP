@@ -1,10 +1,12 @@
 import "./App.css";
 import AddTodo from "./components/AddTodo";
 import Header from "./components/Header";
+import { useInputContext } from "./Hook/UseInputContext";
 
 function App() {
+  const {mode} = useInputContext()
   return (
-    <div>
+    <div className={`App  bg-${mode}`}>
       <Header />
       <AddTodo/>
     </div>

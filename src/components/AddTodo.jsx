@@ -1,10 +1,17 @@
 import React from "react";
+import { useInputContext } from "../Hook/UseInputContext";
 
 function AddTodo() {
 
+  const { input, dispatch , mode} = useInputContext();
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(input)
   }
+
+
  
   return <div className="">
     <div>
@@ -14,8 +21,10 @@ function AddTodo() {
          </button>
       <input 
         type="text" 
-        className="p-3 absolute left-8 w-80 pl-12 top-12  md:pl-14 mx-auto rounded-md focus:outline-none md:w-[33rem] md:p-5 md:px-8" 
-        placeholder="Create a new todo.." 
+        className={`p-3 absolute left-8 w-80 pl-12 top-12  md:pl-14 mx-auto rounded-md focus:outline-none md:w-[33rem] md:p-5 md:px-8 ${mode === 'VeryDarkBlue' ? 'bg-VeryDarkBlue text-VeryLightGray' : 'bg-VeryLightGray text-VeryDarkBlue'}  `}
+        placeholder="Create a new todo.."
+        value={input}
+        onChange = {(e) =>  dispatch({type : 'INPUT_CHANGE' , payload:e.target.value}) } 
 
       />
       </form>
