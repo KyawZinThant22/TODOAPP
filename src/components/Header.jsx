@@ -22,7 +22,7 @@ function Header() {
         } md:hidden h-1/3 w-screen bg-cover`}
       ></div>
       <div
-        className={`absolute   ${
+        className={`absolute ${
           mode === true ? "bg-desktop-dark" : "bg-desktop-light"
         } hidden md:block h-1/3 w-screen bg-cover`}
       ></div>
