@@ -1,14 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import { InputContextProvider } from './context/InputContext';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import { StoreProvider } from "./context/Store";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-
-    <InputContextProvider>
-      <App />
-    </InputContextProvider>
-
+  <StoreProvider>
+    <App />
+  </StoreProvider>
 );
