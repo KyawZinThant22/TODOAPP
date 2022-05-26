@@ -11,7 +11,11 @@ function App() {
   const { mode } = state;
 
   return (
-    <div className={`${mode ? "bg-VeryDarkBlue" : ""} h-screen`}>
+    <div
+      className={`${
+        mode ? "bg-VeryDarkBlue" : "bg-VeryLightGrayishBlue"
+      } h-screen`}
+    >
       <Header />
       <AddTodo />
       <ToDoList />

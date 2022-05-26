@@ -7,7 +7,7 @@ function Footer() {
   return (
     <div className="mt-8 mx-auto w-10/12 justify-between">
       <div
-        className={`p-4 rounded-md font-semibold ${
+        className={`shadow-md p-4 rounded-md font-semibold ${
           mode
             ? "bg-VeryDarkDesaturatedBlue text-LightGrayishBlue"
             : "bg-VeryLightGray text-VeryDarkBlue"
