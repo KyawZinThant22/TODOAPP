@@ -19,7 +19,7 @@ function Header() {
       <div
         className={`absolute ${
           mode === true ? "bg-mobile-dark" : "bg-mobile-light"
-        } md:hidden h-1/3 w-screen bg-cover`}
+        } md:hidden h-2/5 w-screen bg-cover`}
       ></div>
       <div
         className={`absolute ${

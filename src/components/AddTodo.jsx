@@ -8,8 +8,8 @@ function AddTodo() {
   const { mode } = state;
 
   return (
-    <div className="relative w-full flex justify-center">
-      <div className="absolute flex items-center w-full mt-24">
+    <div className="relative mt-6 w-full flex justify-center">
+      <div className="flex items-center w-full">
         {check ? (
           <img
             onClick={() => setCheck(false)}
@@ -30,9 +30,9 @@ function AddTodo() {
           type="text"
           className={`text-xl w-10/12 p-4 md:text-xl left-8 pl-16 md:pl-14 mx-auto rounded-md focus:outline-none md:w-[33rem] ${
             mode === true
-              ? "bg-VeryDarkBlue text-VeryLightGray"
+              ? "bg-VeryDarkDesaturatedBlue text-VeryLightGray"
               : "bg-VeryLightGray text-VeryDarkBlue"
-          }  `}
+          } `}
           placeholder="Create a new todo.."
           onChange={(e) =>
             dispatch({ type: "ADD_TASK", payload: e.target.value })
