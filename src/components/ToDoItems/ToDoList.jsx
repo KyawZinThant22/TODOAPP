@@ -23,7 +23,6 @@ const Sampledata = [
     check: false,
   },
 ];
-console.log();
 
 function ToDoList() {
   const { state, dispatch } = useContext(Store);
