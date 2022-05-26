@@ -77,7 +77,7 @@ function ToDoList() {
             }{" "}
             items left
           </span>
-          <span className="">Clear Completed</span>
+          <span className="cursor-pointer">Clear Completed</span>
         </div>
       </div>
     </div>
