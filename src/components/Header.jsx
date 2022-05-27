@@ -19,12 +19,12 @@ function Header() {
       <div
         className={`absolute ${
           mode === true ? "bg-mobile-dark" : "bg-mobile-light"
-        } md:hidden h-1/3 w-screen bg-cover`}
+        } md:hidden h-2/5 w-screen bg-cover`}
       ></div>
       <div
         className={`absolute ${
           mode === true ? "bg-desktop-dark" : "bg-desktop-light"
-        } hidden md:block h-1/3 w-screen bg-cover`}
+        } hidden md:block h-1/3 w-screen bg-cover `}
       ></div>
       <div className="pt-16 flex justify-center">
         <div className="relative w-5/6 flex justify-between  items-center md:w-[33rem] ">
@@ -33,7 +33,7 @@ function Header() {
           </h1>
 
           <img
-            className="w-6 h-6 "
+            className="w-6 h-6 cursor-pointer "
             onClick={toggleMode}
             src={mode === true ? Sun : Moon}
             alt="logo"

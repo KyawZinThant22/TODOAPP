@@ -7,6 +7,8 @@ import { StoreProvider } from "./context/Store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <StoreProvider>
-    <App />
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
   </StoreProvider>
 );
