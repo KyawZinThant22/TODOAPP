@@ -27,10 +27,10 @@ module.exports = {
         "desktop-light": "url('/src/assets/images/bg-desktop-light.jpg')",
         "mobile-dark": "url('/src/assets/images/bg-mobile-dark.jpg')",
         "mobile-light": "url('/src/assets/images/bg-mobile-light.jpg')",
-        "Gradient-Check" :"linear-gradient(to right, #55DDFF, #C058F3);"
+        "gradient-check": "linear-gradient(to right, #55DDFF, #C058F3);",
+        "gradient-uncheck": "linear-gradient(to right, #000, #000);",
       }),
     },
-    
   },
   variants: {
     extend: {

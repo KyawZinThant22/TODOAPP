@@ -29,7 +29,6 @@ function App() {
       <Header />
       <AddTodo />
       <ToDoList setDragItemID={setDragItemID} />
-      <Footer />
       <div
         className="h-1/6 py-10 text-center"
         onDrop={(e) => {

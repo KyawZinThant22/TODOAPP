@@ -4,32 +4,9 @@ import { v4 as uuidv4 } from "uuid";
 
 export const Store = createContext();
 
-const Sampledata = [
-  {
-    task: "Complete online JavaScript course",
-    check: true,
-  },
-  {
-    task: "Learn SQL in JavaScript",
-    check: false,
-  },
-  {
-    task: "Learn MongoDb in JavaScript",
-    check: false,
-  },
-  {
-    task: "Complete Todo App on Frontend Mentor",
-    check: false,
-  },
-  {
-    task: "Read books",
-    check: false,
-  },
-];
-
 const initialState = {
   tasks: {
-    task: Cookies.get("task") ? JSON.parse(Cookies.get("task")) : Sampledata,
+    task: Cookies.get("task") ? JSON.parse(Cookies.get("task")) : [],
   },
   mode: Cookies.get("darkMode") === "ON" ? true : false,
 };
@@ -54,12 +31,30 @@ const reducer = (state, action) => {
         ...state,
         tasks: { task: TODO },
       };
-
     case "DROP_TASK":
       const item = action.payload.dragItemID;
       const task = state.tasks.task.filter((task) => task.id !== item);
       Cookies.set("task", JSON.stringify(task));
       return { ...state, tasks: { task: task } };
+    case "TOGGLE_TASK":
+      const taskId = action.payload;
+      const taskToggle = state.tasks.task.map((task) => {
+        if (task.id === taskId) {
+          task.check = !task.check;
+        }
+        return task;
+      });
+      Cookies.set("task", JSON.stringify(taskToggle));
+      return { ...state, tasks: { task: taskToggle } };
+    case "DELETE_TASK":
+      console.log(action.payload);
+      const taskDelete = state.tasks.task.filter(
+        (task) => task.id !== action.payload
+      );
+      console.log(taskDelete);
+      Cookies.set("task", JSON.stringify(taskDelete));
+      return { ...state, tasks: { task: taskDelete } };
+
     default:
       return state;
   }

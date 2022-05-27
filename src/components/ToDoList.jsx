@@ -1,12 +1,11 @@
-import { Store } from "../../context/Store";
-import Footer from "../Footer";
-import Check from "../../assets/svg/icon-check.svg";
-import Checked from "../../assets/svg/Whitecheck.svg";
-import Delete from "../../assets/svg/icon-cross.svg";
+import { Store } from "../context/Store";
+import Footer from "./Footer";
+import Checked from "../assets/svg/Whitecheck.svg";
+import Delete from "../assets/svg/icon-cross.svg";
 import React, { useContext, useState } from "react";
 
 function ToDoList({ setDragItemID }) {
-  const { state } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
   const [check, setCheck] = useState(false);
 
   const {
@@ -17,10 +16,17 @@ function ToDoList({ setDragItemID }) {
     setDragItemID(id);
   };
 
+  const toggleCheck = (id) => {
+    dispatch({ type: "TOGGLE_TASK", payload: id });
+  };
+
+  const onDelete = (id) => {
+    dispatch({ type: "DELETE_TASK", payload: id });
+  };
   return (
     <div className="relative flex items-center justify-center">
       <div className="shadow-md md:shadow-none w-10/12 mt-6 divide-y flex flex-col justify-center md:items-center">
-        {task.map((item, index) => {
+        {task.map((task, index) => {
           return (
             <div
               className={`cursor-pointer text-xl w-full p-4 md:text-xl ${
@@ -30,39 +36,37 @@ function ToDoList({ setDragItemID }) {
               }  ${index === task.length && "border-0"} ${
                 index === 0 && "rounded-t-lg"
               }`}
-              key={index}
+              key={task.id}
               draggable
-              onDragStart={(e) => onDragStart(e, index)}
+              onDragStart={(e) => onDragStart(e, task.id)}
             >
               <div className="flex space-x-6 items-center">
-                {check ? (
-                  <>
-                    <img
-                      src={Checked}
-                      onClick={() => setCheck(false)}
-                      alt=""
-                      className={`ml-2 left-[52px] md:left-[38%] border rounded-full z-10 bg-Gradient-Check w-6 h-6 p-1`}
-                    />
-                  </>
-                ) : (
-                  <button
-                    onClick={() => setCheck(!check)}
-                    className={`   ml-2 left-[52px] md:left-[38%]  border rounded-full w-6 h-6 ${"text-LightGrayishBlue"} z-10 `}
-                  ></button>
-                )}
+                <img
+                  src={task.check ? Checked : "Unchecked"}
+                  onClick={() => toggleCheck(task.id)}
+                  alt=""
+                  className={`ml-2 left-[52px] md:left-[38%] border rounded-full z-10 ${
+                    task.check ? "bg-gradient-check" : "bg-gradient-uncheck"
+                  } w-6 h-6 p-1`}
+                />
 
                 <div className="flex w-full justify-between items-center">
                   <span
-                    className={`text-sm ${
+                    className={`text-sm ${task.check && "line-through"} ${
                       mode
                         ? "bg-VeryDarkDesaturatedBlue text-LightGrayishBlue"
                         : "bg-VeryLightGray text-VeryDarkBlue"
                     }`}
                   >
-                    {task.task}
+                    {task.name}
                   </span>
                   {/* <span className="cursor-pointer"></span> */}
-                  <img src={Delete} className="cursor-pointer" alt="delete" />
+                  <img
+                    onClick={() => onDelete(task.id)}
+                    src={Delete}
+                    className="cursor-pointer"
+                    alt="delete"
+                  />
                 </div>
               </div>
             </div>

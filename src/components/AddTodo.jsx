@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { Store } from "../context/Store";
-import Check from "../assets/svg/icon-check.svg";
+import Checked from "../assets/svg/Whitecheck.svg";
 
 function AddTodo() {
   const [check, setCheck] = useState(false);
@@ -8,12 +8,13 @@ function AddTodo() {
   const { mode } = state;
   const inputRef = useRef();
 
+  // Below useEffect will be refactored soon.
   useEffect(() => {
     const keyPressEvent = (e) => {
       if (e.keyCode === 13) {
         dispatch({
           type: "ADD_TASK",
-          payload: { task: inputRef.current.value, check: check },
+          payload: { name: inputRef.current.value, check: check },
         });
         inputRef.current.value = "";
       }
@@ -32,8 +33,8 @@ function AddTodo() {
         {check ? (
           <img
             onClick={() => setCheck(false)}
-            className={`ml-2 left-[52px] md:left-[35.7%] border absolute rounded-full w-6 h-6 z-10`}
-            src={Check}
+            className={`bg-gradient-check ml-2 left-[52px] md:left-[35.7%] border absolute rounded-full w-6 h-6 z-10`}
+            src={Checked}
             alt="check"
           />
         ) : (
