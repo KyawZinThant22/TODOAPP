@@ -38,7 +38,7 @@ const reducer = (state, action) => {
       return { ...state, tasks: { task: task } };
     case "TOGGLE_TASK":
       const taskId = action.payload;
-      const taskToggle = state.tasks.task.map((task) => {
+      const taskToggle = JSON.parse(Cookies.get("task")).map((task) => {
         if (task.id === taskId) {
           task.check = !task.check;
         }
@@ -53,7 +53,9 @@ const reducer = (state, action) => {
       Cookies.set("task", JSON.stringify(taskDelete));
       return { ...state, tasks: { task: taskDelete } };
     case "CLEAR_COMPLETED":
-      const taskClear = state.tasks.task.filter((task) => !task.check);
+      const taskClear = JSON.parse(Cookies.get("task")).filter(
+        (task) => !task.check
+      );
       Cookies.set("task", JSON.stringify(taskClear));
       return { ...state, tasks: { task: taskClear } };
     case "FILTER_ACTIVE":
@@ -67,6 +69,10 @@ const reducer = (state, action) => {
       const taskFilterCompleted = JSON.parse(Cookies.get("task")).filter(
         (task) => task.check
       );
+      if (taskFilterCompleted.length === 0) {
+        alert("No completed tasks");
+        return { ...state, tasks: { task: state.tasks.task } };
+      }
       return { ...state, tasks: { task: taskFilterCompleted } };
     default:
       return state;
