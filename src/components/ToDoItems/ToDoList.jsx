@@ -2,6 +2,9 @@ import React, { useContext, useState } from "react";
 import { Store } from "../../context/Store";
 import Footer from "../Footer";
 import Check from "../../assets/svg/icon-check.svg";
+import Checked from "../../assets/svg/Whitecheck.svg";
+
+import Delete from "../../assets/svg/icon-cross.svg"
 const Sampledata = [
   {
     task: "Complete online JavaScript course",
@@ -39,6 +42,7 @@ function ToDoList() {
       <div className="shadow-md md:shadow-none w-10/12 mt-6 divide-y flex flex-col justify-center md:items-center">
         {Sampledata.map((item, index) => {
           return (
+
             <div
               key = { index }
               className={`text-xl w-full p-4 md:text-xl md:w-[35rem]  ${
@@ -51,19 +55,22 @@ function ToDoList() {
             >
               <div className="flex space-x-6 items-center">
                {check ? (
-                  <img 
-                  onClick={() => setCheck(false)}
-                  src={Check}
-                  alt="check"
-                  className="text-fuchsia-600"
-               />
-        
+                  <>
+                 
+                      <img src={Checked}
+                          onClick = {() => setCheck(false)}
+                          alt="" 
+                          className={`ml-2 left-[52px] md:left-[38%] border rounded-full z-10 bg-Gradient-Check w-6 h-6 p-1`}     
+                      />
                   
+                  </>
+              
+          
                ):(
 
                  <button
                   onClick={() => setCheck(!check)}
-                  className={`   ml-2 left-[52px] md:left-[38%]  border rounded-full w-6 h-5 ${"text-LightGrayishBlue"} z-10 `}
+                  className={`   ml-2 left-[52px] md:left-[38%]  border rounded-full w-6 h-6 ${"text-LightGrayishBlue"} z-10 `}
                ></button>
 
                )}
@@ -79,7 +86,8 @@ function ToDoList() {
                   >
                     {item.task}
                   </span>
-                  <span className="cursor-pointer">x</span>
+                  {/* <span className="cursor-pointer"></span> */}
+                  <img src={Delete} className = "cursor-pointer" alt="delete" />
                 </div>
               </div>
             </div>
