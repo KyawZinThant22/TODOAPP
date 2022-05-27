@@ -25,20 +25,7 @@ const Sampledata = [
   },
 ];
 
-const  Gradient = () => {
-  return (
-    <>
-    
-      <img 
-          src={Check}
-          alt="check"
-          className="text-fuchsia-600"
-       />
 
-    
-    </>
-  )
-} 
 
 function ToDoList() {
   const { state, dispatch } = useContext(Store);
@@ -64,7 +51,14 @@ function ToDoList() {
             >
               <div className="flex space-x-6 items-center">
                {check ? (
-                   <Gradient/>
+                  <img 
+                  onClick={() => setCheck(false)}
+                  src={Check}
+                  alt="check"
+                  className="text-fuchsia-600"
+               />
+        
+                  
                ):(
 
                  <button
