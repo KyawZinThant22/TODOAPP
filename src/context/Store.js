@@ -58,8 +58,8 @@ const reducer = (state, action) => {
     case "DROP_TASK":
       const item = action.payload.dragItemID;
       const task = state.tasks.task.filter((task) => task.id !== item);
-      // Cookies.set("task", JSON.stringify(task));
-      return { ...state, tasks: { task: TODO } };
+      Cookies.set("task", JSON.stringify(task));
+      return { ...state, tasks: { task: task } };
     default:
       return state;
   }
