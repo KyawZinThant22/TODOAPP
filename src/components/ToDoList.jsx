@@ -23,6 +23,10 @@ function ToDoList({ setDragItemID }) {
   const onDelete = (id) => {
     dispatch({ type: "DELETE_TASK", payload: id });
   };
+
+  const clearCompleted = () => {
+    dispatch({ type: "CLEAR_COMPLETED" });
+  };
   return (
     <div className="relative flex items-center justify-center">
       <div className="shadow-md md:shadow-none w-10/12 mt-6 divide-y flex flex-col justify-center md:items-center">
@@ -92,7 +96,9 @@ function ToDoList({ setDragItemID }) {
             <Footer />
           </div>
 
-          <span className="cursor-pointer">Clear Completed</span>
+          <span onClick={clearCompleted} className="cursor-pointer">
+            Clear Completed
+          </span>
         </div>
       </div>
     </div>

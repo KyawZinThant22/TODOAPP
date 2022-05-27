@@ -47,14 +47,27 @@ const reducer = (state, action) => {
       Cookies.set("task", JSON.stringify(taskToggle));
       return { ...state, tasks: { task: taskToggle } };
     case "DELETE_TASK":
-      console.log(action.payload);
       const taskDelete = state.tasks.task.filter(
         (task) => task.id !== action.payload
       );
-      console.log(taskDelete);
       Cookies.set("task", JSON.stringify(taskDelete));
       return { ...state, tasks: { task: taskDelete } };
-
+    case "CLEAR_COMPLETED":
+      const taskClear = state.tasks.task.filter((task) => !task.check);
+      Cookies.set("task", JSON.stringify(taskClear));
+      return { ...state, tasks: { task: taskClear } };
+    case "FILTER_ACTIVE":
+      const taskFilter = JSON.parse(Cookies.get("task")).filter(
+        (task) => !task.check
+      );
+      return { ...state, tasks: { task: taskFilter } };
+    case "FILTER_ALL":
+      return { ...state, tasks: { task: JSON.parse(Cookies.get("task")) } };
+    case "FILTER_COMPLETED":
+      const taskFilterCompleted = JSON.parse(Cookies.get("task")).filter(
+        (task) => task.check
+      );
+      return { ...state, tasks: { task: taskFilterCompleted } };
     default:
       return state;
   }

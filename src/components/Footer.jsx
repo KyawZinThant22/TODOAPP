@@ -4,6 +4,17 @@ import { Store } from "../context/Store";
 function Footer() {
   const { state, dispatch } = useContext(Store);
   const { mode } = state;
+
+  const filterActive = () => {
+    dispatch({ type: "FILTER_ACTIVE" });
+  };
+  const filterAll = () => {
+    dispatch({ type: "FILTER_ALL" });
+  };
+
+  const filterCompleted = () => {
+    dispatch({ type: "FILTER_COMPLETED" });
+  };
   return (
     <div className="mt-8 md:mt-0 mx-auto w-10/12 ">
       <div
@@ -13,9 +24,15 @@ function Footer() {
             : "bg-VeryLightGray text-VeryDarkBlue"
         } flex  space-x-11 justify-center `}
       >
-        <span className="cursor-pointer">All</span>
-        <span className="cursor-pointer">Active</span>
-        <span className="cursor-pointer">Completed</span>
+        <span onClick={filterAll} className="cursor-pointer">
+          All
+        </span>
+        <span onClick={filterActive} className="cursor-pointer">
+          Active
+        </span>
+        <span onClick={filterCompleted} className="cursor-pointer">
+          Completed
+        </span>
       </div>
     </div>
   );
