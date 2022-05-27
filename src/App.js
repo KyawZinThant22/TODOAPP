@@ -19,7 +19,9 @@ function App() {
       <Header />
       <AddTodo />
       <ToDoList />
-      <Footer />
+     <div className="md:hidden">
+       <Footer/>
+     </div>
     </div>
   );
 }
