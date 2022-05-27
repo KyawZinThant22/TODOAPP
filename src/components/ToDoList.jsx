@@ -4,6 +4,7 @@ import Checked from "../assets/svg/Whitecheck.svg";
 import Delete from "../assets/svg/icon-cross.svg";
 import React, { useContext, useState } from "react";
 
+
 function ToDoList({ setDragItemID }) {
   const { state, dispatch } = useContext(Store);
   const [check, setCheck] = useState(false);
@@ -33,7 +34,7 @@ function ToDoList({ setDragItemID }) {
         {task.map((task, index) => {
           return (
             <div
-              className={`cursor-pointer text-xl w-full p-4 md:text-xl ${
+              className={`cursor-pointer text-xl w-full p-4 md:text-x md:w-[35rem] ${
                 mode
                   ? "bg-VeryDarkDesaturatedBlue text-LightGrayishBlue"
                   : "bg-VeryLightGray text-VeryDarkBlue"
@@ -46,7 +47,7 @@ function ToDoList({ setDragItemID }) {
             >
               <div className="flex space-x-6 items-center">
                 <img
-                  src={task.check ? Checked : "Unchecked"}
+                  src={task.check ? Checked : Checked}
                   onClick={() => toggleCheck(task.id)}
                   alt=""
                   className={`ml-2 left-[52px] md:left-[38%] border rounded-full z-10 ${
@@ -81,7 +82,7 @@ function ToDoList({ setDragItemID }) {
             mode
               ? "bg-VeryDarkDesaturatedBlue text-LightGrayishBlue"
               : "bg-VeryLightGray text-DarkGrayishBlue"
-          } text-sm flex justify-between rounded-b-lg p-6 font-semibold`}
+          } text-sm flex justify-between rounded-b-lg p-6 font-semibold items-center md:w-[35rem]`}
         >
           <span>
             {

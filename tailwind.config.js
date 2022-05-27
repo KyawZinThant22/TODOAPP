@@ -28,7 +28,7 @@ module.exports = {
         "mobile-dark": "url('/src/assets/images/bg-mobile-dark.jpg')",
         "mobile-light": "url('/src/assets/images/bg-mobile-light.jpg')",
         "gradient-check": "linear-gradient(to right, #55DDFF, #C058F3);",
-        "gradient-uncheck": "linear-gradient(to right, #000, #000);",
+        // "gradient-uncheck": "linear-gradient(to right, #000, #000);",
       }),
     },
   },

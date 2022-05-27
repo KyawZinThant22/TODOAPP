@@ -30,13 +30,13 @@ function App() {
       <AddTodo />
       <ToDoList setDragItemID={setDragItemID} />
       <div
-        className="h-1/6 py-10 text-center"
+        className="h-1/6 mt-28 md:mt-12 py-10 text-center"
         onDrop={(e) => {
           onDrop(e, "complete");
         }}
         onDragOver={(e) => onDragOver(e)}
       >
-        <span className="text-lg text-center text-DarkGrayishBlue font-semibold">
+        <span className="text-lg text-center text-DarkGrayishBlue font-semibold ">
           Drag and drop to reorder list
         </span>
       </div>

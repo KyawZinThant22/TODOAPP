@@ -16,7 +16,7 @@ function Footer() {
     dispatch({ type: "FILTER_COMPLETED" });
   };
   return (
-    <div className="mt-8 md:mt-0 mx-auto w-10/12 ">
+    <div className="mt-8 md:mt-0 mx-auto w-10/12  ">
       <div
         className={`shadow-md md:shadow-none p-4 md:p-2 rounded-md font-semibold ${
           mode
