@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { Store } from "../context/Store";
 import Check from "../assets/svg/icon-check.svg";
 
@@ -6,13 +6,32 @@ function AddTodo() {
   const [check, setCheck] = useState(false);
   const { state, dispatch } = useContext(Store);
   const { mode } = state;
+  const inputRef = useRef();
+
+  useEffect(() => {
+    const keyPressEvent = (e) => {
+      if (e.keyCode === 13) {
+        dispatch({
+          type: "ADD_TASK",
+          payload: { task: inputRef.current.value, check: check },
+        });
+        inputRef.current.value = "";
+      }
+    };
+
+    inputRef.current.addEventListener("keydown", keyPressEvent);
+    let parentInputRef = inputRef;
+    return () => {
+      parentInputRef.current.removeEventListener("keydown", keyPressEvent);
+    };
+  }, [check, dispatch]);
 
   return (
     <div className="relative mt-6 w-full flex justify-center">
       <div className="flex items-center w-full">
         {check ? (
           <img
-            onClick={() => setCheck(false)}
+            onClick={() => setCheck(!check)}
             className={`ml-2 left-[52px] md:left-[38%] border absolute rounded-full w-6 h-6 z-10`}
             src={Check}
             alt="check"
@@ -34,9 +53,7 @@ function AddTodo() {
               : "bg-VeryLightGray text-VeryDarkBlue"
           } `}
           placeholder="Create a new todo.."
-          onChange={(e) =>
-            dispatch({ type: "ADD_TASK", payload: e.target.value })
-          }
+          ref={inputRef}
         />
       </div>
     </div>

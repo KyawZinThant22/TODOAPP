@@ -1,45 +1,32 @@
 import React, { useContext, useState } from "react";
-import { Store } from "../../context/Store";
+import { Store } from "../context/Store";
 
-const Sampledata = [
-  {
-    task: "Complete online JavaScript course",
-    check: true,
-  },
-  {
-    task: "Learn SQL in JavaScript",
-    check: false,
-  },
-  {
-    task: "Learn MongoDb in JavaScript",
-    check: false,
-  },
-  {
-    task: "Complete Todo App on Frontend Mentor",
-    check: false,
-  },
-  {
-    task: "Read books",
-    check: false,
-  },
-];
+function ToDoList({ setDragItemID }) {
+  const { state } = useContext(Store);
+  const {
+    mode,
+    tasks: { task },
+  } = state;
+  const onDragStart = (e, id) => {
+    setDragItemID(id);
+  };
 
-function ToDoList() {
-  const { state, dispatch } = useContext(Store);
-  const { mode } = state;
   return (
     <div className="relative flex items-center justify-center">
       <div className="shadow-md w-10/12 mt-6 divide-y flex flex-col justify-center">
-        {Sampledata.map((item, index) => {
+        {task.map((task, index) => {
           return (
             <div
-              className={`text-xl w-full p-4 md:text-xl ${
+              className={`cursor-pointer text-xl w-full p-4 md:text-xl ${
                 mode
                   ? "bg-VeryDarkDesaturatedBlue text-LightGrayishBlue"
                   : "bg-VeryLightGray text-VeryDarkBlue"
-              }  ${index === Sampledata.length && "border-0"} ${
+              }  ${index === task.length && "border-0"} ${
                 index === 0 && "rounded-t-lg"
               }`}
+              key={index}
+              draggable
+              onDragStart={(e) => onDragStart(e, index)}
             >
               <div className="flex space-x-6 items-center">
                 <button
@@ -54,7 +41,7 @@ function ToDoList() {
                         : "bg-VeryLightGray text-VeryDarkBlue"
                     }`}
                   >
-                    {item.task}
+                    {task.task}
                   </span>
                   <span className="cursor-pointer">x</span>
                 </div>
@@ -66,13 +53,13 @@ function ToDoList() {
           className={`${
             mode
               ? "bg-VeryDarkDesaturatedBlue text-LightGrayishBlue"
-              : "bg-VeryLightGray text-VeryDarkBlue"
-          } text-sm flex justify-between rounded-b-lg p-6`}
+              : "bg-VeryLightGray text-DarkGrayishBlue"
+          } text-sm flex justify-between rounded-b-lg p-6 font-semibold`}
         >
           <span>
             {
-              Sampledata.filter((item) => {
-                return !item.check;
+              task.filter((task) => {
+                return !task.check;
               }).length
             }{" "}
             items left

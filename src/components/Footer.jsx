@@ -10,7 +10,7 @@ function Footer() {
         className={`shadow-md p-4 rounded-md font-semibold ${
           mode
             ? "bg-VeryDarkDesaturatedBlue text-LightGrayishBlue"
-            : "bg-VeryLightGray text-VeryDarkBlue"
+            : "bg-VeryLightGray text-DarkGrayishBlue"
         } flex justify-evenly`}
       >
         <span className="cursor-pointer">All</span>
