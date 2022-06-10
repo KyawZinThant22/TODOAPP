@@ -22,13 +22,17 @@ function App() {
   };
   return (
     <div
-      className={`${
+      className={`h-screen relative w-screen ${
         mode ? "bg-VeryDarkBlue" : "bg-VeryLightGrayishBlue"
-      } h-screen`}
+      } `}
     >
       <Header />
       <AddTodo />
       <ToDoList setDragItemID={setDragItemID} />
+      <div className="md:hidden flex">
+        <Footer />
+      </div>
+
       <div
         className="h-1/6 py-10 text-center"
         onDrop={(e) => {
