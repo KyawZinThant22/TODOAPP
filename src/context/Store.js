@@ -1,7 +1,7 @@
 import { createContext, useReducer } from "react";
 import Cookies from "js-cookie";
 import { v4 as uuidv4 } from "uuid";
-
+import { actions } from "./Actions";
 export const Store = createContext();
 
 const initialState = {
@@ -13,13 +13,13 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "DARK_MODE_ON":
+    case actions.DARK_MODE_ON:
       return { ...state, mode: true };
-    case "DARK_MODE_OFF":
+    case actions.DARK_MODE_OFF:
       return { ...state, mode: false };
-    case "INPUT_CHANGE":
+    case actions.INPUT_CHANGE:
       return { ...state, input: action.payload };
-    case "ADD_TASK":
+    case actions.ADD_TASK:
       const addTask = action.payload;
       addTask.id = uuidv4();
       // const existedTask = state.tasks.task.find(

@@ -1,6 +1,8 @@
 {
   "name": "todoapp",
   "version": "0.1.0",
+  "description": "Frontend Mentor Challenge",
+  "author": "Wai Yan Kyaw && Kyaw Zin Thant",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",

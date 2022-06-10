@@ -4,15 +4,14 @@ import Checked from "../assets/svg/Whitecheck.svg";
 import Delete from "../assets/svg/icon-cross.svg";
 import React, { useContext, useState } from "react";
 
-
 function ToDoList({ setDragItemID }) {
   const { state, dispatch } = useContext(Store);
-  const [check, setCheck] = useState(false);
 
   const {
     mode,
     tasks: { task },
   } = state;
+
   const onDragStart = (e, id) => {
     setDragItemID(id);
   };
@@ -28,9 +27,10 @@ function ToDoList({ setDragItemID }) {
   const clearCompleted = () => {
     dispatch({ type: "CLEAR_COMPLETED" });
   };
+
   return (
-    <div className="relative flex items-center justify-center">
-      <div className="shadow-md md:shadow-none w-10/12 mt-6 divide-y flex flex-col justify-center md:items-center">
+    <div className="relative flex items-center justify-center sm:w-8/12 w-9/12 mx-auto">
+      <div className="shadow-md md:shadow-none w-full mt-6 divide-y flex flex-col justify-center md:items-center">
         {task.map((task, index) => {
           return (
             <div
@@ -38,7 +38,7 @@ function ToDoList({ setDragItemID }) {
                 mode
                   ? "bg-VeryDarkDesaturatedBlue text-LightGrayishBlue"
                   : "bg-VeryLightGray text-VeryDarkBlue"
-              }  ${index === task.length && "border-0"} ${
+              } ${index === task.length && "border-0"} ${
                 index === 0 && "rounded-t-lg"
               }`}
               key={task.id}
@@ -47,12 +47,12 @@ function ToDoList({ setDragItemID }) {
             >
               <div className="flex space-x-6 items-center">
                 <img
-                  src={task.check ? Checked : Checked}
+                  src={task.check && Checked}
                   onClick={() => toggleCheck(task.id)}
                   alt=""
                   className={`ml-2 left-[52px] md:left-[38%] border rounded-full z-10 ${
-                    task.check ? "bg-gradient-check" : "bg-gradient-uncheck"
-                  } w-6 h-6 p-1`}
+                    task.check && "bg-gradient-check"
+                  } w-7 h-6`}
                 />
 
                 <div className="flex w-full justify-between items-center">
@@ -82,7 +82,7 @@ function ToDoList({ setDragItemID }) {
             mode
               ? "bg-VeryDarkDesaturatedBlue text-LightGrayishBlue"
               : "bg-VeryLightGray text-DarkGrayishBlue"
-          } text-sm flex justify-between rounded-b-lg p-6 font-semibold items-center md:w-[35rem]`}
+          } text-sm flex justify-between rounded-b-lg p-6 font-semibold w-full items-center`}
         >
           <span>
             {
@@ -92,7 +92,6 @@ function ToDoList({ setDragItemID }) {
             }{" "}
             items left
           </span>
-
           <div className="hidden md:flex">
             <Footer />
           </div>

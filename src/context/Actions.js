@@ -1,0 +1,6 @@
+export const actions = {
+  DARK_MODE_ON: "DARK_MODE_ON",
+  DARK_MODE_OFF: "DARK_MODE_OFF",
+  INPUT_CHANGE: "INPUT_CHANGE",
+  ADD_TASK: "ADD_TASK",
+};

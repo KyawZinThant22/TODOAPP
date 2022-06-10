@@ -16,43 +16,45 @@ function AddTodo() {
           type: "ADD_TASK",
           payload: { name: inputRef.current.value, check: check },
         });
+
         inputRef.current.value = "";
       }
     };
 
     inputRef.current.addEventListener("keydown", keyPressEvent);
+
     let parentInputRef = inputRef;
+
     return () => {
       parentInputRef.current.removeEventListener("keydown", keyPressEvent);
     };
   }, [check, dispatch]);
 
   return (
-    <div className="relative mt-6 w-full flex justify-center">
-      <div className="flex items-center w-full">
-        {check ? (
-          <img
-            onClick={() => setCheck(false)}
-            className={`bg-gradient-check ml-2 left-[52px] md:left-[35.7%] border absolute rounded-full w-6 h-6 z-10`}
-            src={Checked}
-            alt="check"
-          />
-        ) : (
-          <button
-            onClick={() => setCheck(!check)}
-            className={`ml-2 left-[52px] md:left-[35.7%] border absolute rounded-full w-6 h-6 ${
-              mode ? "text-LightGrayishBlue" : "text-DarkGrayishBlue"
-            } z-10`}
-          ></button>
-        )}
+    <div className="relative mt-6 sm:w-8/12 w-9/12 mx-auto">
+      <div
+        className={`rounded-lg p-4 space-x-4 flex items-center ${
+          mode
+            ? "bg-VeryDarkDesaturatedBlue text-VeryLightGray"
+            : "bg-VeryLightGray text-VeryDarkBlue"
+        }`}
+      >
+        <img
+          onClick={() => setCheck(!check)}
+          src={check && Checked}
+          alt=""
+          className={`${
+            check && "bg-gradient-check"
+          } ml-2 md:left-[35.7%] border rounded-full z-10 w-7 h-6`}
+        />
 
         <input
           type="text"
-          className={`text-xl w-10/12 p-4 md:text-xl left-8 pl-16 md:pl-16 mx-auto rounded-md focus:outline-none md:w-[35rem] ${
-            mode === true
+          className={`${
+            mode
               ? "bg-VeryDarkDesaturatedBlue text-VeryLightGray"
               : "bg-VeryLightGray text-VeryDarkBlue"
-          } `}
+          }text-xl w-full md:text-xl rounded-md focus:outline-none`}
           placeholder="Create a new todo.."
           ref={inputRef}
         />
