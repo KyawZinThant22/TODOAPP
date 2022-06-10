@@ -28,21 +28,21 @@ function App() {
     >
       <Header />
       <AddTodo />
-      <ToDoList setDragItemID={setDragItemID} />
+      <ToDoList dragItemID={dragItemID} setDragItemID={setDragItemID} />
       <div className="md:hidden flex">
         <Footer />
       </div>
 
       <div
-        className="h-1/6 mt-28 md:mt-12 py-10 text-center"
+        className="mt-12"
+        onDragOver={(e) => onDragOver(e)}
         onDrop={(e) => {
           onDrop(e, "complete");
         }}
-        onDragOver={(e) => onDragOver(e)}
       >
-        <span className="text-lg text-center text-DarkGrayishBlue font-semibold ">
+        <p className="h-full py-12 w-full flex items-center justify-center text-lg text-DarkGrayishBlue font-semibold ">
           Drag and drop to reorder list
-        </span>
+        </p>
       </div>
     </div>
   );

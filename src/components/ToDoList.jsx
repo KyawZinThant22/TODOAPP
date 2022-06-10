@@ -4,7 +4,7 @@ import Checked from "../assets/svg/Whitecheck.svg";
 import Delete from "../assets/svg/icon-cross.svg";
 import React, { useContext, useState } from "react";
 
-function ToDoList({ setDragItemID }) {
+function ToDoList({ dragItemID, setDragItemID }) {
   const { state, dispatch } = useContext(Store);
 
   const {
@@ -28,13 +28,21 @@ function ToDoList({ setDragItemID }) {
     dispatch({ type: "CLEAR_COMPLETED" });
   };
 
+  const handleDrop = (id, e) => {
+    e.preventDefault();
+    dispatch({
+      type: "REORDER",
+      payload: { droppedID: id, pickedID: dragItemID },
+    });
+  };
+
   return (
     <div className="relative flex items-center justify-center sm:w-8/12 w-9/12 mx-auto">
       <div className="shadow-md md:shadow-none w-full mt-6 divide-y flex flex-col justify-center md:items-center">
         {task.map((task, index) => {
           return (
             <div
-              className={`cursor-pointer text-xl w-full p-4 md:text-x md:w-[35rem] ${
+              className={`cursor-pointer text-xl w-full p-4 md:text-x ${
                 mode
                   ? "bg-VeryDarkDesaturatedBlue text-LightGrayishBlue"
                   : "bg-VeryLightGray text-VeryDarkBlue"
@@ -43,6 +51,8 @@ function ToDoList({ setDragItemID }) {
               }`}
               key={task.id}
               draggable
+              onDrop={(e) => handleDrop(task.id, e)}
+              onDragOver={(e) => e.preventDefault()}
               onDragStart={(e) => onDragStart(e, task.id)}
             >
               <div className="flex space-x-6 items-center">
