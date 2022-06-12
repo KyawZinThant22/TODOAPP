@@ -6,6 +6,7 @@ function AddTodo() {
   const [check, setCheck] = useState(false);
   const { state, dispatch } = useContext(Store);
   const { mode } = state;
+
   const inputRef = useRef();
 
   // Below useEffect will be refactored soon.
@@ -16,15 +17,11 @@ function AddTodo() {
           type: "ADD_TASK",
           payload: { name: inputRef.current.value, check: check },
         });
-
         inputRef.current.value = "";
       }
     };
-
     inputRef.current.addEventListener("keydown", keyPressEvent);
-
     let parentInputRef = inputRef;
-
     return () => {
       parentInputRef.current.removeEventListener("keydown", keyPressEvent);
     };
